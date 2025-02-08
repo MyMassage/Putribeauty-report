@@ -295,25 +295,32 @@
             localStorage.removeItem("userEmail");
             window.location.href = 'login.html';
         });
-
-        // Cek apakah pengguna sudah login
         window.onload = function () {
-            const isLoggedIn = localStorage.getItem("isLoggedIn");
-            const userEmail = localStorage.getItem("userEmail");
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+        const userEmail = localStorage.getItem("userEmail");
 
-            if (!isLoggedIn || !userEmail) {
-                // Jika belum login, arahkan ke halaman login
-                window.location.href = 'login.html';
-            } else {
-                // Tampilkan data pengguna atau lakukan sesuatu
-                document.getElementById('userGreeting').textContent = "Selamat datang, " + userEmail;
-            }
-        };
-
-        // Fungsi untuk toggle kebijakan
-        function togglePolicy(element) {
-            element.classList.toggle('active');
+        if (!isLoggedIn || !userEmail) {
+            // Jika belum login, arahkan ke halaman login
+            window.location.href = 'login.html';
+        } else {
+            // Tampilkan data pengguna
+            document.getElementById('userGreeting').textContent = "Selamat datang, " + userEmail;
         }
+    };
+
+    function toggleSidebar() {
+        document.getElementById('sidebar').classList.toggle('active');
+    }
+
+    document.querySelector(".logout-btn").addEventListener("click", function () {
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("userEmail");
+        window.location.href = 'login.html';
+    });
+
+    function togglePolicy(element) {
+        element.classList.toggle('active');
+    }
     </script>
 </body>
 </html>
